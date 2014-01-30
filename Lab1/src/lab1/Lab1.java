@@ -4,16 +4,19 @@
  * and open the template in the editor.
  */
 
+package lab1;
+
 /**
  *
  * @author Cowtop
  */
-public class Tester {
+public class Lab1 {
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-        int a = 10;
+        System.out.println("class");
     }
 
-    public void test(int argument) {
-
-    }
 }
