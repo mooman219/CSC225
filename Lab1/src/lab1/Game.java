@@ -5,9 +5,6 @@ import java.util.Scanner;
 
 public class Game {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         new Game().startGame();
     }
@@ -27,7 +24,7 @@ public class Game {
     }
 
     public void playRound() {
-        int playerInput = input();
+        int playerInput = getInput();
         int computerInput = random.nextInt(3);
         System.out.print("The computer is " + getActionName(computerInput) + ". You are " + getActionName(playerInput) + ". ");
         switch (Integer.compare(playerInput, computerInput)) {
@@ -58,7 +55,7 @@ public class Game {
         }
     }
 
-    public int input() {
+    public int getInput() {
         int input = -1;
         while (input < 0 || input > 2) {
             System.out.print("\nscissor (0), rock (1), paper (2): ");
