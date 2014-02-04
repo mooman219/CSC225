@@ -43,3 +43,5 @@ Desktop.ini
 ############
 
 *.DS_STORE
+/nbproject/private/
+/build/
