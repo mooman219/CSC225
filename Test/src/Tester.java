@@ -9,11 +9,19 @@
  * @author Cowtop
  */
 public class Tester {
+
     public static void main(String[] args) {
-        int a = 10;
-    }
-
-    public void test(int argument) {
-
+        int min = 9;
+        int sec = 99;
+        int count = 0;
+        while(min >= 0) {
+            while(sec >= 0) {
+                sec--;
+                count += (min * 60) + sec;
+            }
+            min--;
+            sec = 60;
+        }
+        System.out.println("Count: " + count);
     }
 }

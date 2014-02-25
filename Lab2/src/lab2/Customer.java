@@ -116,19 +116,10 @@ public abstract class Customer {
             return false;
         }
         final Customer other = (Customer) obj;
-        if(!Objects.equals(this.phoneNumber, other.phoneNumber)) {
-            return false;
-        }
         if(!Objects.equals(this.lastName, other.lastName)) {
             return false;
         }
         if(!Objects.equals(this.firstName, other.firstName)) {
-            return false;
-        }
-        if(!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if(Double.doubleToLongBits(this.balance) != Double.doubleToLongBits(other.balance)) {
             return false;
         }
         return true;
