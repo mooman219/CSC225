@@ -2,7 +2,7 @@ package lab2;
 
 public class Checking extends Customer {
 
-    public Checking(String lastName, String firstName, String id) {
+    public Checking(String lastName, String firstName, int id) {
         super(lastName, firstName, id);
     }
 
@@ -10,7 +10,7 @@ public class Checking extends Customer {
         super(lastName, firstName);
     }
 
-    public Checking(String id) {
+    public Checking(int id) {
         super(id);
     }
 

@@ -2,16 +2,15 @@ package lab2;
 
 import java.util.Objects;
 
-public abstract class Customer {
+public abstract class Customer implements Comparable<Customer> {
 
-    private String phoneNumber = "";
     private String lastName = "";
     private String firstName = "";
-    private String id = "";
+    private int id = 0;
 
     private double balance = 0;
 
-    public Customer(String lastName, String firstName, String id) {
+    public Customer(String lastName, String firstName, int id) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.id = id;
@@ -22,19 +21,11 @@ public abstract class Customer {
         this.firstName = firstName;
     }
 
-    public Customer(String id) {
+    public Customer(int id) {
         this.id = id;
     }
 
     public Customer() {
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public String getLastName() {
@@ -53,11 +44,11 @@ public abstract class Customer {
         this.firstName = firstName;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -101,6 +92,11 @@ public abstract class Customer {
     public abstract String getAccountType();
 
     @Override
+    public int compareTo(Customer object) {
+        return object.getId() == this.id ? 0 : object.getId() < this.id ? 1 : -1;
+    }
+
+    @Override
     public String toString() {
         return "Customer: " + this.getFirstName() + " " + this.getLastName() + ", " + this.getId() + "\n"
                 + "Type of account: " + this.getAccountType() + "\n"
@@ -112,7 +108,7 @@ public abstract class Customer {
         if(obj == null) {
             return false;
         }
-        if(getClass() != obj.getClass()) {
+        if(!(obj instanceof Customer)) {
             return false;
         }
         final Customer other = (Customer) obj;

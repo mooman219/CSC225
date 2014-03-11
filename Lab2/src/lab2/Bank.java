@@ -1,5 +1,9 @@
 package lab2;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class Bank {
 
     private Customer[] customers = new Customer[30];
@@ -48,6 +52,14 @@ public class Bank {
         return found ? index : -1;
     }
 
+    public void sort() {
+        List<Customer> list = Arrays.asList(customers);
+        Collections.sort(list);
+        for(int i = 0; i < customer_count; i++) {
+            customers[i] = list.get(i);
+        }
+    }
+
     /**
      * Change the current capacity of this bag.
      * @param minimumCapacity the new capacity for this bag Data is instance
@@ -66,5 +78,18 @@ public class Bank {
             System.arraycopy(customers, 0, biggerArray, 0, customer_count);
             customers = biggerArray;
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder ret = new StringBuilder(200);
+        for(int i = 0; i < customer_count; i++) {
+            ret.append(customers[i].getFirstName()).append(" ")
+            .append(customers[i].getLastName()).append(" ")
+            .append(customers[i].getId()).append(" ")
+            .append(customers[i].getBalance()).append(" ")
+            .append(customers[i].getAccountType()).append("\n");
+        }
+        return ret.toString();
     }
 }
