@@ -2,7 +2,7 @@ package lab2;
 
 public class Savings extends Customer {
 
-    public Savings(String lastName, String firstName, int id) {
+    public Savings(String lastName, String firstName, long id) {
         super(lastName, firstName, id);
     }
 

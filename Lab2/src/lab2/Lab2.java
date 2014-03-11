@@ -8,6 +8,8 @@ public class Lab2 {
     public static void main(String[] args) {
         BankTest bank = new BankTest();
 
+        bank.parseFile("./bank.txt");
+
         //Sort the customers in ascending order based on the last and //first name
         System.out.println("sort the list");
         bank.menu("6");

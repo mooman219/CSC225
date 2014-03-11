@@ -6,11 +6,11 @@ public abstract class Customer implements Comparable<Customer> {
 
     private String lastName = "";
     private String firstName = "";
-    private int id = 0;
+    private long id = 0;
 
     private double balance = 0;
 
-    public Customer(String lastName, String firstName, int id) {
+    public Customer(String lastName, String firstName, long id) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.id = id;
@@ -44,7 +44,7 @@ public abstract class Customer implements Comparable<Customer> {
         this.firstName = firstName;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -64,7 +64,7 @@ public abstract class Customer implements Comparable<Customer> {
                     + "Amount: " + amount + "\n");
         } else {
             this.balance += amount;
-            System.out.println("Deposit completed"
+            System.out.println("Deposit completed\n"
                     + toString()
                     + "Amount: " + amount + "\n");
         }
@@ -83,7 +83,7 @@ public abstract class Customer implements Comparable<Customer> {
                     + "Amount Requested: " + amount + "\n");
         } else {
             this.balance -= amount;
-            System.out.println("Withdraw completed"
+            System.out.println("Withdraw completed\n"
                     + toString()
                     + "Amount: " + amount + "\n");
         }

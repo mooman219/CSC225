@@ -2,7 +2,7 @@ package lab2;
 
 public class Checking extends Customer {
 
-    public Checking(String lastName, String firstName, int id) {
+    public Checking(String lastName, String firstName, long id) {
         super(lastName, firstName, id);
     }
 

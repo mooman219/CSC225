@@ -1,17 +1,14 @@
 package lab2;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 public class Bank {
 
     private Customer[] customers = new Customer[30];
     private int customer_count = 0;
 
-    public void add(Customer c) {
-        ensureCapacity(customer_count++);
+    public Customer add(Customer c) {
+        ensureCapacity(++customer_count);
         customers[customer_count - 1] = c;
+        return c;
     }
 
     public boolean remove(Customer c) {
@@ -53,10 +50,19 @@ public class Bank {
     }
 
     public void sort() {
-        List<Customer> list = Arrays.asList(customers);
-        Collections.sort(list);
-        for(int i = 0; i < customer_count; i++) {
-            customers[i] = list.get(i);
+        int n = customer_count;
+        boolean sorted = false;  //turn to false if we make a swap
+        while(!sorted) {
+            sorted = true;
+            for(int i = 0; i < n - 1; i++) {
+                if(customers[i].compareTo(customers[i + 1]) > 0) {
+                    Customer temp = customers[i + 1];
+                    customers[i + 1] = customers[i];
+                    customers[i] = temp;
+                    sorted = false;
+                }
+            }
+            n--; //go through 1 fewer elements each time, since end now sorted
         }
     }
 
@@ -85,10 +91,10 @@ public class Bank {
         StringBuilder ret = new StringBuilder(200);
         for(int i = 0; i < customer_count; i++) {
             ret.append(customers[i].getFirstName()).append(" ")
-            .append(customers[i].getLastName()).append(" ")
-            .append(customers[i].getId()).append(" ")
-            .append(customers[i].getBalance()).append(" ")
-            .append(customers[i].getAccountType()).append("\n");
+                    .append(customers[i].getLastName()).append(" ")
+                    .append(customers[i].getId()).append(" ")
+                    .append(customers[i].getBalance()).append(" ")
+                    .append(customers[i].getAccountType()).append("\n");
         }
         return ret.toString();
     }

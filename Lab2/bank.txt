@@ -1,0 +1,6 @@
+Smith John 2124447866 325.60 savings
+Biden Joe 7161113356 2000.53 checking
+Obama Barak 3107771212 5000.32 checking
+Boehner John 5098881234 6120.55 savings
+Bush George 6075672345 200.00 savings
+Clinton Hillery 2124562378 1000.50 checking
