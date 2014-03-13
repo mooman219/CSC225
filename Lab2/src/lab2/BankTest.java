@@ -35,7 +35,10 @@ public class BankTest {
         }
         return ret;
     }
-
+    /**
+     * Reads lines then splits strings and adds either a checking or savings account.
+     * @param path 
+     */
     public void parseFile(String path) {
         List<String> lines = readFile(path);
         for(String line : lines) {
@@ -47,7 +50,10 @@ public class BankTest {
             }
         }
     }
-
+    /**
+     * Takes the input and decides what case its going to use, deposit, withdraw, remove, sort, display.
+     * @param input 
+     */
     public void menu(String input) {
         String[] args = input.split(" ");
         Customer temp;

@@ -4,13 +4,26 @@ public class Bank {
 
     private Customer[] customers = new Customer[30];
     private int customer_count = 0;
-
+    
+    /**
+     * adds a new customer object and increases customer count,
+     * sets customers equal to c.
+     *
+     * @param c - takes and object c in
+     * @return Customer c.
+     */
     public Customer add(Customer c) {
         ensureCapacity(++customer_count);
         customers[customer_count - 1] = c;
         return c;
     }
-
+    /**
+     * takes in customers, and can remove customers from the array.
+     * 
+     * 
+     * @param c
+     * @return removed
+     */
     public boolean remove(Customer c) {
         boolean removed = false;
         int index = -1;
@@ -24,7 +37,12 @@ public class Bank {
         }
         return removed;
     }
-
+    /**
+     * gets customer info then sets it equal to result.
+     * 
+     * @param c
+     * @return result 
+     */
     public Customer get(Customer c) {
         Customer result = null;
         int index = -1;
@@ -36,7 +54,12 @@ public class Bank {
         }
         return result;
     }
-
+    /**
+     * finds a customer.
+     * 
+     * @param c
+     * @return found
+     */
     private int find(Customer c) {
         boolean found = false;
         int index = -1;
@@ -48,7 +71,9 @@ public class Bank {
         }
         return found ? index : -1;
     }
-
+    /**
+     * Sorts customers and compares customers to one another.
+     */
     public void sort() {
         int n = customer_count;
         boolean sorted = false;  //turn to false if we make a swap
