@@ -1,0 +1,109 @@
+sort the list
+
+John Smith       2124447866 325.6   Savings
+Hillery Clinton  2124562378 1000.5  Checking
+Barak Obama      3107771212 5000.32 Checking
+John Boehner     5098881234 6120.55 Savings
+George Bush      6075672345 200.0   Savings
+Joe Biden        7161113356 2000.53 Checking
+
+=====================================
+
+print the list
+
+John Smith       2124447866 325.6   Savings
+Hillery Clinton  2124562378 1000.5  Checking
+Barak Obama      3107771212 5000.32 Checking
+John Boehner     5098881234 6120.55 Savings
+George Bush      6075672345 200.0   Savings
+Joe Biden        7161113356 2000.53 Checking
+
+=====================================
+
+Withdraw $125 from Smith John account
+
+Withdraw completed
+Customer: John Smith, 2124447866
+Type of account: Savings
+Balance: 200.60
+Amount: 125.0
+
+John Smith       2124447866 200.60  Savings
+Hillery Clinton  2124562378 1000.5  Checking
+Barak Obama      3107771212 5000.32 Checking
+John Boehner     5098881234 6120.55 Savings
+George Bush      6075672345 200.0   Savings
+Joe Biden        7161113356 2000.53 Checking
+
+=====================================
+
+Withdraw $300 from Smith John account
+
+----ERROR----
+Insufficient funds
+Customer: John Smith, 2124447866
+Type of account: Savings
+Balance: 200.60
+Amount Requested: 300.0
+Amount Withdrawn: 200.60
+-------------
+
+John Smith      2124447866 0.0     Savings
+Hillery Clinton 2124562378 1000.5  Checking
+Barak Obama     3107771212 5000.32 Checking
+John Boehner    5098881234 6120.55 Savings
+George Bush     6075672345 200.0   Savings
+Joe Biden       7161113356 2000.53 Checking
+
+=====================================
+
+Deposit $500 to Clinton Hillery's account
+
+Deposit completed
+Customer: Hillery Clinton, 2124562378
+Type of account: Checking
+Balance: 1500.5
+Amount: 500.0
+
+John Smith       2124447866 0.0     Savings
+Hillery Clinton  2124562378 1500.5  Checking
+Barak Obama      3107771212 5000.32 Checking
+John Boehner     5098881234 6120.55 Savings
+George Bush      6075672345 200.0   Savings
+Joe Biden        7161113356 2000.53 Checking
+
+=====================================
+
+Remove Obama Barak from the list
+
+John Smith       2124447866 0.0     Savings
+Hillery Clinton  2124562378 1500.5  Checking
+Joe Biden        7161113356 2000.53 Checking
+John Boehner     5098881234 6120.55 Savings
+George Bush      6075672345 200.0   Savings
+
+=====================================
+
+Deposit - $100 into George Bush account
+
+Unable to find customer.
+
+=====================================
+
+Withdraw - $50 from Biden Joe account
+ 
+----ERROR----
+Invalid withdrawal amount
+Customer: Joe Biden, 7161113356
+Type of account: Checking
+Balance: 2000.53
+Amount Requested: -50.0
+-------------
+
+John Smith       2124447866 0.0     Savings
+Hillery Clinton  2124562378 1500.5  Checking
+Joe Biden        7161113356 2000.53 Checking
+John Boehner     5098881234 6120.55 Savings
+George Bush      6075672345 200.0   Savings
+
+=====================================

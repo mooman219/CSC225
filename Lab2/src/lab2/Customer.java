@@ -121,7 +121,9 @@ public abstract class Customer implements Comparable<Customer> {
             System.out.println("--ERROR--\n"
                     + "Insufficient funds\n"
                     + toString()
-                    + "Amount Requested: " + amount + "\n");
+                    + "Amount Requested: " + amount + "\n"
+                    + "Amount Withdrawn: " + this.balance + "\n");
+            this.balance = 0;
         } else {
             this.balance -= amount;
             System.out.println("Withdraw completed\n"
