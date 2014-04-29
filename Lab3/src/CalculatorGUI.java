@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * All rights reserved.
  */
@@ -28,12 +31,13 @@ public class CalculatorGUI extends javax.swing.JFrame {
         input_value = new javax.swing.JTextField();
         lable_equation = new javax.swing.JLabel();
         lable_value = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        button_clear = new javax.swing.JButton();
+        button_calc = new javax.swing.JButton();
         menu = new javax.swing.JMenuBar();
         menu_op = new javax.swing.JMenu();
         menu_op_calc = new javax.swing.JMenuItem();
         menu_op_clear = new javax.swing.JMenuItem();
+        menu_op_seperator = new javax.swing.JPopupMenu.Separator();
         menu_op_exit = new javax.swing.JMenuItem();
         menu_help = new javax.swing.JMenu();
         menu_help_about = new javax.swing.JMenuItem();
@@ -55,14 +59,14 @@ public class CalculatorGUI extends javax.swing.JFrame {
         lable_value.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lable_value.setText("Value");
 
-        jButton1.setText("Clear");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        button_clear.setText("Clear");
+        button_clear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_clearMouseClicked(evt);
             }
         });
 
-        jButton2.setText("Calculate");
+        button_calc.setText("Calculate");
 
         menu_op.setText("Operations");
 
@@ -70,9 +74,20 @@ public class CalculatorGUI extends javax.swing.JFrame {
         menu_op.add(menu_op_calc);
 
         menu_op_clear.setText("Clear");
+        menu_op_clear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menu_op_clearMousePressed(evt);
+            }
+        });
         menu_op.add(menu_op_clear);
+        menu_op.add(menu_op_seperator);
 
         menu_op_exit.setText("Exit");
+        menu_op_exit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menu_op_exitMousePressed(evt);
+            }
+        });
         menu_op.add(menu_op_exit);
 
         menu.add(menu_op);
@@ -80,14 +95,19 @@ public class CalculatorGUI extends javax.swing.JFrame {
         menu_help.setText("Help");
 
         menu_help_about.setText("About");
-        menu_help_about.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_help_aboutActionPerformed(evt);
+        menu_help_about.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menu_help_aboutMousePressed(evt);
             }
         });
         menu_help.add(menu_help_about);
 
         menu_help_info.setText("Information");
+        menu_help_info.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menu_help_infoMousePressed(evt);
+            }
+        });
         menu_help.add(menu_help_info);
 
         menu.add(menu_help);
@@ -99,23 +119,20 @@ public class CalculatorGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(button_calc, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(button_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lable_equation, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(input_equation, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lable_value, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(input_value, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(lable_equation, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(input_equation, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lable_value, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(input_value, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -131,8 +148,8 @@ public class CalculatorGUI extends javax.swing.JFrame {
                     .addComponent(lable_value))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(button_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button_calc, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -143,13 +160,27 @@ public class CalculatorGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_input_equationActionPerformed
 
-    private void menu_help_aboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_help_aboutActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menu_help_aboutActionPerformed
+    private void button_clearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_clearMouseClicked
+        input_equation.setText("");
+        input_value.setText("");
+    }//GEN-LAST:event_button_clearMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void menu_help_infoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_help_infoMousePressed
+        JOptionPane.showMessageDialog(this, "Example for input:\n1/2 + 2/3\nNeed space between operands and operation.");
+    }//GEN-LAST:event_menu_help_infoMousePressed
+
+    private void menu_help_aboutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_help_aboutMousePressed
+        JOptionPane.showMessageDialog(this, "Computing Fraction Program");
+    }//GEN-LAST:event_menu_help_aboutMousePressed
+
+    private void menu_op_exitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_op_exitMousePressed
+        System.exit(0);
+    }//GEN-LAST:event_menu_op_exitMousePressed
+
+    private void menu_op_clearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_op_clearMousePressed
+        input_equation.setText("");
+        input_value.setText("");
+    }//GEN-LAST:event_menu_op_clearMousePressed
 
     /**
      * @param args the command line arguments
@@ -193,10 +224,10 @@ public class CalculatorGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton button_calc;
+    private javax.swing.JButton button_clear;
     private javax.swing.JTextField input_equation;
     private javax.swing.JTextField input_value;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel lable_equation;
     private javax.swing.JLabel lable_value;
     private javax.swing.JMenuBar menu;
@@ -207,5 +238,6 @@ public class CalculatorGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem menu_op_calc;
     private javax.swing.JMenuItem menu_op_clear;
     private javax.swing.JMenuItem menu_op_exit;
+    private javax.swing.JPopupMenu.Separator menu_op_seperator;
     // End of variables declaration//GEN-END:variables
 }
