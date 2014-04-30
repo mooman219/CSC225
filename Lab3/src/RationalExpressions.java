@@ -22,4 +22,8 @@ interface RationalExpressions {
     public int getNumerator();
 
     public int geDenominator();
+
+    public static class RationalNumber {
+
+    }
 }
