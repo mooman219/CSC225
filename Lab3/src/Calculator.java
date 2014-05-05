@@ -55,6 +55,7 @@ public class Calculator extends JFrame {
         menu_help_info = new JMenuItem();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         input_value.setEditable(false);
 
