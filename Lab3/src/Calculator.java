@@ -37,7 +37,6 @@ public class Calculator extends JFrame {
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
-
         input_equation = new JTextField();
         input_value = new JTextField();
         lable_equation = new JLabel();
@@ -69,22 +68,34 @@ public class Calculator extends JFrame {
         button_clear.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button_clearMouseClicked(evt);
+                clearAction(evt);
             }
         });
 
         button_calc.setText("Calculate");
+        button_calc.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                calculateAction(evt);
+            }
+        });
 
         menu_op.setText("Operations");
 
         menu_op_calc.setText("Calculate");
+        menu_op_calc.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                calculateAction(evt);
+            }
+        });
         menu_op.add(menu_op_calc);
 
         menu_op_clear.setText("Clear");
         menu_op_clear.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                menu_op_clearMousePressed(evt);
+                clearAction(evt);
             }
         });
         menu_op.add(menu_op_clear);
@@ -94,7 +105,7 @@ public class Calculator extends JFrame {
         menu_op_exit.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                menu_op_exitMousePressed(evt);
+                exit(evt);
             }
         });
         menu_op.add(menu_op_exit);
@@ -107,7 +118,7 @@ public class Calculator extends JFrame {
         menu_help_about.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                menu_help_aboutMousePressed(evt);
+                displayAbout(evt);
             }
         });
         menu_help.add(menu_help_about);
@@ -116,7 +127,7 @@ public class Calculator extends JFrame {
         menu_help_info.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                menu_help_infoMousePressed(evt);
+                displayInfo(evt);
             }
         });
         menu_help.add(menu_help_info);
@@ -167,35 +178,24 @@ public class Calculator extends JFrame {
         pack();
     }
 
-    private void button_clearMouseClicked(java.awt.event.MouseEvent evt) {
-        input_equation.setText("hello");
-        input_value.setText("hello");
-        System.out.println("mouseClicked");
-    }
-
-    private void menu_help_infoMousePressed(java.awt.event.MouseEvent evt) {
+    private void displayInfo(java.awt.event.MouseEvent evt) {
         JOptionPane.showMessageDialog(this, "Example for input:\n1/2 + 2/3\nNeed space between operands and operation.");
     }
 
-    private void menu_help_aboutMousePressed(java.awt.event.MouseEvent evt) {
+    private void displayAbout(java.awt.event.MouseEvent evt) {
         JOptionPane.showMessageDialog(this, "Computing Fraction Program");
     }
 
-    private void menu_op_exitMousePressed(java.awt.event.MouseEvent evt) {
+    private void exit(java.awt.event.MouseEvent evt) {
         System.exit(0);
     }
 
-    private void menu_op_clearMousePressed(java.awt.event.MouseEvent evt) {
-        input_equation.setText("");
-        input_value.setText("");
+    private void calculateAction(java.awt.event.MouseEvent evt) {
+        input_value.setText(Main.calculate(input_equation.getText()));
     }
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new CalculatorGUI().setVisible(true);
-            }
-        });
+    private void clearAction(java.awt.event.MouseEvent evt) {
+        input_equation.setText("");
+        input_value.setText("");
     }
 }

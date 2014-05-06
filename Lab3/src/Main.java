@@ -1,14 +1,24 @@
 
 public class Main {
 
-    public static String doStuff(String str) {
-        String[] result = str.split(" ");
+    public static void main(String args[]) {
+        new Calculator().setVisible(true);
+    }
+
+    public static String calculate(String str) {
+        RationalNumber a, b;
+        String[] breakdown = str.split(" ");
         StringBuilder ret = new StringBuilder(str);
         ret.append(" = ");
 
-        RationalNumber a = new RationalNumber(result[0]);
-        RationalNumber b = new RationalNumber(result[2]);
-        switch(result[1]) {
+        try {
+            a = new RationalNumber(breakdown[0]);
+            b = new RationalNumber(breakdown[2]);
+        } catch(ArrayIndexOutOfBoundsException | NumberFormatException e) {
+            return "Invalid number format.";
+        }
+
+        switch(breakdown[1]) {
             case "+":
                 ret.append(a.add(b).toString());
                 break;
@@ -38,7 +48,7 @@ public class Main {
                 ret.append(a.ge(b));
                 break;
             default:
-                return "Error";
+                return "Invalid operator";
         }
 
         return ret.toString();
