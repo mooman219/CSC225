@@ -14,7 +14,11 @@ public class RationalNumber implements RationalExpressions {
     public RationalNumber(String line) {
         String[] expression = line.split("/");
         numerator = Integer.parseInt(expression[0]);
-        denominator = Integer.parseInt(expression[1]);
+        if(expression.length >= 2) {
+            denominator = Integer.parseInt(expression[1]);
+        } else {
+            denominator = 1;
+        }
     }
     //implementation of addition function from rational expressions
     @Override

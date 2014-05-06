@@ -86,7 +86,7 @@ public class Calculator extends JFrame {
         menu_op_calc.setText("Calculate");
         menu_op_calc.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent evt) {
+            public void mousePressed(MouseEvent evt) {
                 calculateAction();
             }
         });
