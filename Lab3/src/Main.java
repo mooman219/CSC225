@@ -1,3 +1,4 @@
+
 public class Main {
 
     public static String doStuff(String str) {
@@ -27,6 +28,7 @@ public class Main {
                 ret.append(a.gt(b));
                 break;
             case "=":
+            case "==":
                 ret.append(a.eq(b));
                 break;
             case "<=":

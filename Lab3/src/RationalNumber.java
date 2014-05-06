@@ -19,17 +19,17 @@ public class RationalNumber implements RationalExpressions {
 
     @Override
     public RationalNumber add(RationalNumber r) {
-        int gcd = RationalNumber.gcd(this, r);
-        numerator = (numerator * (gcd / denominator)) + (r.numerator * (gcd / r.denominator));
-        denominator = gcd;
+        int lcm = RationalNumber.lcm(denominator, r.denominator);
+        numerator = (numerator * (lcm / denominator)) + (r.numerator * (lcm / r.denominator));
+        denominator = lcm;
         return this;
     }
 
     @Override
     public RationalNumber sub(RationalNumber r) {
-        int gcd = RationalNumber.gcd(this, r);
-        numerator = (numerator * (gcd / denominator)) - (r.numerator * (gcd / r.denominator));
-        denominator = gcd;
+        int lcm = RationalNumber.lcm(denominator, r.denominator);
+        numerator = (numerator * (lcm / denominator)) - (r.numerator * (lcm / r.denominator));
+        denominator = lcm;
         return this;
     }
 
@@ -49,32 +49,32 @@ public class RationalNumber implements RationalExpressions {
 
     @Override
     public boolean lt(RationalNumber r) {
-        int gcd = RationalNumber.gcd(this, r);
-        return (numerator * (gcd / denominator)) < (r.numerator * (gcd / r.denominator));
+        int lcm = RationalNumber.lcm(denominator, r.denominator);
+        return (numerator * (lcm / denominator)) < (r.numerator * (lcm / r.denominator));
     }
 
     @Override
     public boolean gt(RationalNumber r) {
-        int gcd = RationalNumber.gcd(this, r);
-        return (numerator * (gcd / denominator)) > (r.numerator * (gcd / r.denominator));
+        int lcm = RationalNumber.lcm(denominator, r.denominator);
+        return (numerator * (lcm / denominator)) > (r.numerator * (lcm / r.denominator));
     }
 
     @Override
     public boolean eq(RationalNumber r) {
-        int gcd = RationalNumber.gcd(this, r);
-        return (numerator * (gcd / denominator)) == (r.numerator * (gcd / r.denominator));
+        int lcm = RationalNumber.lcm(denominator, r.denominator);
+        return (numerator * (lcm / denominator)) == (r.numerator * (lcm / r.denominator));
     }
 
     @Override
     public boolean le(RationalNumber r) {
-        int gcd = RationalNumber.gcd(this, r);
-        return (numerator * (gcd / denominator)) <= (r.numerator * (gcd / r.denominator));
+        int lcm = RationalNumber.lcm(denominator, r.denominator);
+        return (numerator * (lcm / denominator)) <= (r.numerator * (lcm / r.denominator));
     }
 
     @Override
     public boolean ge(RationalNumber r) {
-        int gcd = RationalNumber.gcd(this, r);
-        return (numerator * (gcd / denominator)) >= (r.numerator * (gcd / r.denominator));
+        int lcm = RationalNumber.lcm(denominator, r.denominator);
+        return (numerator * (lcm / denominator)) >= (r.numerator * (lcm / r.denominator));
     }
 
     @Override
@@ -92,7 +92,7 @@ public class RationalNumber implements RationalExpressions {
         return numerator + "/" + denominator;
     }
 
-    public static int gcd(RationalNumber a, RationalNumber b) {
-        return new BigInteger("" + a.denominator).gcd(new BigInteger("" + b.denominator)).intValue();
+    public static int lcm(int a, int b) {
+        return (a * b) / BigInteger.valueOf(a).gcd(BigInteger.valueOf(b)).intValue();
     }
 }

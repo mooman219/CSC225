@@ -184,10 +184,7 @@ public class Calculator extends JFrame {
     private void menu_op_exitMousePressed(java.awt.event.MouseEvent evt) {
         System.exit(0);
     }
-    private void menu_op_calculateMousePressed(java.awt.event.MouseEvent evt) {
-        input_equation.getText();
-        input_value.setText("");
-    }
+
     private void menu_op_clearMousePressed(java.awt.event.MouseEvent evt) {
         input_equation.setText("");
         input_value.setText("");
