@@ -48,7 +48,7 @@ public class Main {
                 ret.append(a.ge(b));
                 break;
             default:
-                return "Invalid operator";
+                return "Invalid operator.";
         }
 
         return ret.toString();
