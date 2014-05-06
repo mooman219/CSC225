@@ -12,7 +12,7 @@ public class RationalNumber implements RationalExpressions {
     }
 
     public RationalNumber(String line) {
-        String[] expression = line.split("///");
+        String[] expression = line.split("/");
         numerator = Integer.parseInt(expression[0]);
         denominator = Integer.parseInt(expression[1]);
     }

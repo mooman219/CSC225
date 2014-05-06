@@ -68,10 +68,20 @@ public class CalculatorGUI extends javax.swing.JFrame {
         });
 
         button_calc.setText("Calculate");
+        button_calc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_calcMouseClicked(evt);
+            }
+        });
 
         menu_op.setText("Operations");
 
         menu_op_calc.setText("Calculate");
+        menu_op_calc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menu_op_calcMousePressed(evt);
+            }
+        });
         menu_op.add(menu_op_calc);
 
         menu_op_clear.setText("Clear");
@@ -165,7 +175,7 @@ public class CalculatorGUI extends javax.swing.JFrame {
         input_equation.setText("");
         input_value.setText("");
     }//GEN-LAST:event_button_clearMouseClicked
-
+    
     private void menu_help_infoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_help_infoMousePressed
         JOptionPane.showMessageDialog(this, "Example for input:\n1/2 + 2/3\nNeed space between operands and operation.");
     }//GEN-LAST:event_menu_help_infoMousePressed
@@ -177,11 +187,20 @@ public class CalculatorGUI extends javax.swing.JFrame {
     private void menu_op_exitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_op_exitMousePressed
         System.exit(0);
     }//GEN-LAST:event_menu_op_exitMousePressed
-
+    
     private void menu_op_clearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_op_clearMousePressed
         input_equation.setText("");
         input_value.setText("");
     }//GEN-LAST:event_menu_op_clearMousePressed
+
+    private void button_calcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_calcMouseClicked
+        input_value.setText(Main.doStuff(input_equation.getText()));
+         
+    }//GEN-LAST:event_button_calcMouseClicked
+
+    private void menu_op_calcMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_op_calcMousePressed
+         input_value.setText(Main.doStuff(input_equation.getText()));
+    }//GEN-LAST:event_menu_op_calcMousePressed
 
     /**
      * @param args the command line arguments
