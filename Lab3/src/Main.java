@@ -1,47 +1,44 @@
+public class Main {
 
-import java.math.BigInteger;
-
-public class Main{
-
-    // "1/2 + 2/3 = 7/6"
     public static String doStuff(String str) {
         String[] result = str.split(" ");
-        RationalNumber rationalValue = new RationalNumber(1,1);
-        boolean boolValue;
-        
-        
+        StringBuilder ret = new StringBuilder(str);
+        ret.append(" = ");
+
         RationalNumber a = new RationalNumber(result[0]);
         RationalNumber b = new RationalNumber(result[2]);
         switch(result[1]) {
             case "+":
-                rationalValue = a.add(b);
+                ret.append(a.add(b).toString());
                 break;
             case "-":
-               rationalValue = a.sub(b);
+                ret.append(a.sub(b).toString());
                 break;
             case "*":
-                rationalValue = a.mlt(b);
+                ret.append(a.mlt(b).toString());
                 break;
             case "/":
-                rationalValue = a.div(b);
+                ret.append(a.div(b).toString());
                 break;
             case "<":
-                boolValue = a.lt(b);
+                ret.append(a.lt(b));
                 break;
             case ">":
-                boolValue = a.gt(b);
+                ret.append(a.gt(b));
                 break;
             case "=":
-                boolValue = a.eq(b);
+                ret.append(a.eq(b));
                 break;
             case "<=":
-                boolValue = a.le(b);
+                ret.append(a.le(b));
                 break;
             case ">=":
-                boolValue = a.ge(b);
+                ret.append(a.ge(b));
                 break;
+            default:
+                return "Error";
         }
-        
-        return rationalValue.toString();
+
+        return ret.toString();
     }
 }
