@@ -35,12 +35,16 @@ public class RationalNumber implements RationalExpressions {
 
     @Override
     public RationalNumber mlt(RationalNumber r) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        numerator *= r.numerator;
+        denominator *= r.denominator;
+        return this;
     }
 
     @Override
     public RationalNumber div(RationalNumber r) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        numerator *= r.denominator;
+        denominator *= r.numerator;
+        return this;
     }
 
     @Override
