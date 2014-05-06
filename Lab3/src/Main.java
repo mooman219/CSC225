@@ -1,10 +1,14 @@
-
+/* One more epic program by the great joe and ben
+   advanced java csc225 /w wexler
+*/
 public class Main {
 
     public static void main(String args[]) {
         new Calculator().setVisible(true);
     }
-
+    /*
+    Calculate method, takes in input from gui and does calculation, then sends output back to gui
+    */
     public static String calculate(String str) {
         RationalNumber a, b;
         String[] breakdown = str.split(" ");

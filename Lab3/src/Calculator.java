@@ -36,7 +36,7 @@ public class Calculator extends JFrame {
     public Calculator() {
         initComponents();
     }
-
+    // making components for the gui to use
     @SuppressWarnings("unchecked")
     private void initComponents() {
         input_equation = new JTextField();
@@ -57,15 +57,15 @@ public class Calculator extends JFrame {
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-
+        // making no input option for value slot
         input_value.setEditable(false);
-
+        // enter equation label
         lable_equation.setHorizontalAlignment(SwingConstants.RIGHT);
         lable_equation.setText("Enter Equation");
-
+        // value label
         lable_value.setHorizontalAlignment(SwingConstants.RIGHT);
         lable_value.setText("Value");
-
+        // clear button with listener
         button_clear.setText("Clear");
         button_clear.addMouseListener(new MouseAdapter() {
             @Override
@@ -73,7 +73,7 @@ public class Calculator extends JFrame {
                 clearAction();
             }
         });
-
+        //calc button with listener
         button_calc.setText("Calculate");
         button_calc.addMouseListener(new MouseAdapter() {
             @Override
@@ -81,7 +81,7 @@ public class Calculator extends JFrame {
                 calculateAction();
             }
         });
-
+        //menu options from here,
         menu_op.setText("Operations");
         menu_op_calc.setText("Calculate");
         menu_op_calc.addMouseListener(new MouseAdapter() {
@@ -127,7 +127,7 @@ public class Calculator extends JFrame {
         });
         menu_help.add(menu_help_info);
         menu.add(menu_help);
-
+        //to here
         setJMenuBar(menu);
 
         GroupLayout layout = new GroupLayout(getContentPane());
@@ -171,23 +171,23 @@ public class Calculator extends JFrame {
 
         pack();
     }
-
+    //display press information
     private void displayInfo() {
         JOptionPane.showMessageDialog(this, "Example for input:\n1/2 + 2/3\nNeed space between operands and operation.");
     }
-
+    //about press information
     private void displayAbout() {
         JOptionPane.showMessageDialog(this, "Computing Fraction Program");
     }
-
+    // exits program when button pressed
     private void exit() {
         System.exit(0);
     }
-
+    //puts action to pressing calculate button
     private void calculateAction() {
         input_value.setText(Main.calculate(input_equation.getText()));
     }
-
+    // clears text fields in both value and equation
     private void clearAction() {
         input_equation.setText("");
         input_value.setText("");
