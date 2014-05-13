@@ -1,0 +1,4 @@
+jdbc.drivers=sun.jdbc.odbc.JdbcOdbcDriver
+jdbc.url=jdbc:odbc:TheBooks
+jdbc.username=JohnQPublic
+jdbc.password=
