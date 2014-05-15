@@ -12,8 +12,16 @@ public class Exam2 extends JFrame {
     private JLabel L1, L2, L3;
     private ActionListener listener = new ButtonListener();
 
+    public static void main(String[] args) {
+        JFrame frame = new Exam2();
+        frame.setSize(400, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+
     public Exam2() {
         // --- Question 1 ---
+        setTitle("Exam #2");
         P1 = new JPanel();
         L1 = new JLabel("Name 1");
         L2 = new JLabel("Name 2");
@@ -38,24 +46,21 @@ public class Exam2 extends JFrame {
         P2.add(exit);
         // ------------------
         // --- Question 3 ---
-        // a
+        // A
         swap.addActionListener(listener);
-        clear.addActionListener(listener);
         exit.addActionListener(listener);
-        // b
+        // B
+        clear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                clearText();
+            }
+        });
         // ------------------
         this.setLayout(new GridLayout(2, 1));
         this.add(P1);
         this.add(P2);
         this.pack();
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new Exam2();
-        frame.setTitle("Exam #2");
-        frame.setSize(400, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
     }
 
     public class ButtonListener implements ActionListener {
@@ -64,9 +69,6 @@ public class Exam2 extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             switch(e.getActionCommand()) {
-                case "Clear":
-                    clearText();
-                    break;
                 case "Swap":
                     swapText();
                     break;
@@ -85,13 +87,6 @@ public class Exam2 extends JFrame {
         }
         // ------------------
 
-        // --- Question 6 ---
-        private void clearText() {
-            T1.setText("");
-            T2.setText("");
-        }
-        // ------------------
-
         // --- Question 7 ---
         private void exitWindow() {
             System.exit(0);
@@ -100,4 +95,10 @@ public class Exam2 extends JFrame {
 
     }
 
+    // --- Question 6 ---
+    private void clearText() {
+        T1.setText("");
+        T2.setText("");
+    }
+    // ------------------
 }
