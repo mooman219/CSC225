@@ -40,9 +40,9 @@ public class Exam2 extends JFrame {
         // --- Question 3 ---
         // a
         swap.addActionListener(listener);
+        clear.addActionListener(listener);
         exit.addActionListener(listener);
         // b
-
         // ------------------
         this.setLayout(new GridLayout(2, 1));
         this.add(P1);
@@ -59,6 +59,23 @@ public class Exam2 extends JFrame {
     }
 
     public class ButtonListener implements ActionListener {
+
+        // --- Question 4 ---
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            switch(e.getActionCommand()) {
+                case "Clear":
+                    clearText();
+                    break;
+                case "Swap":
+                    swapText();
+                    break;
+                case "Exit":
+                    exitWindow();
+                    break;
+            }
+        }
+        // ------------------
 
         // --- Question 5 ---
         private void swapText() {
